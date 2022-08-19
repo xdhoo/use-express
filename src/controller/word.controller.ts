@@ -43,6 +43,12 @@ export async function shouldReviewWordHandle(
           $lte: new Date(nowDate - 7 * 24 * 3600000),
         },
       },
+      {
+        created: {
+          $gte: new Date(nowDate - 16 * 24 * 3600000),
+          $lte: new Date(nowDate - 15 * 24 * 3600000),
+        },
+      },
     ],
   });
 
