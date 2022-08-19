@@ -1,5 +1,6 @@
 import { Express, Router, Request, Response } from "express";
 import User from "./user.routes";
+import Word from "./word.routes";
 
 interface RouterConf {
   path: string;
@@ -7,7 +8,10 @@ interface RouterConf {
   meta?: unknown;
 }
 
-const routerConf: Array<RouterConf> = [{ path: "/user", router: User }];
+const routerConf: Array<RouterConf> = [
+  { path: "/user", router: User },
+  { path: "/word", router: Word },
+];
 
 function routes(app: Express) {
   app.get("/", (req: Request, res: Response) =>

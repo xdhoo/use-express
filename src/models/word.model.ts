@@ -6,9 +6,10 @@ export interface WordDocument extends mongoose.Document {
   type: string;
   egSentences: unknown;
   status: number;
-  createdAt: Date;
-  updateAt: Date;
-  deletedAT: Date;
+  points: number;
+  created: number;
+  updated: number;
+  deleted: number;
 }
 
 const wordSchema = new mongoose.Schema(
@@ -18,9 +19,15 @@ const wordSchema = new mongoose.Schema(
     type: { type: String },
     egSentences: {},
     status: { type: Number },
+    points: { type: Number, default: 0 },
   },
-  { timestamps: true }
+  {
+    timestamps: {
+      createdAt: "created",
+      updatedAt: "updated",
+    },
+  }
 );
 
-const UserModel = mongoose.model<WordDocument>("Word", wordSchema);
-export default UserModel;
+const WordModel = mongoose.model<WordDocument>("Word", wordSchema);
+export default WordModel;
